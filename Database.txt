@@ -1,0 +1,21 @@
+##MySQL
+
+##connect
+
+mysql -u root -p
+
+##show db's
+
+show databases;
+
+##use db
+
+use catalogue;
+
+##show tables
+
+show tables;
+
+##Import
+
+mysql -u root -p < schema.sql
