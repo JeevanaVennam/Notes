@@ -1,3 +1,33 @@
+##Boot & System
+
+Boot Process :
+BIOS/UEFI (hw check POST boot)--> GRUB (kernel selection) --> Kernel (CPU memory drives)--> Systemd (PID 1) --> Services (NEtwork SSH DBs)--> Login
+
+BIOS : Legacy firmware MBR
+
+UEFI : Modern firmware GPT Secure boot fast large disks
+
+GRUB : loads kernel
+
+systemd : modern init systems (PID 1) startup process
+(tradictional SysVinit)
+systemctl : manages services in systemd (etc/systemd/system)
+
+services: legacy service management command (no enable disable)
+
+##Systemctl
+
+systemctl status nginx
+systemctl start nginx
+systemctl stop nginx
+systecmctl restart nginx
+systemctl enable nginx
+systecmctl disable nginx
+Check logs:
+
+journalctl -u nginx
+journal -xe
+
 ##User Permissions
 
 id
@@ -27,6 +57,11 @@ tail -f
 find / -name file.txt
 
 ## Process Management
+Process:
+Running instance of a program.
+
+Thread:
+Lightweight execution unit inside a process.
 
 ps -ef
 top
@@ -43,6 +78,34 @@ free -m
 lsblk
 mount
 
+Check Processes:
+ps -ef ---> gives list of all process
+top
+htop
+pgrep
+
+To get top CPU usage
+ps -eo pid,ppid,cmd,%mem --sort=-%cpu |head   --> customized sort fot top 10 usages
+ps aux --sort=-%cpu |head                     -->includes all colums but sorts first 10
+
+High CPU:
+top → identify PID → logs → renice/kill.
+
+same goes with %mem for memory
+
+High Memory:
+free -m → top → identify PID → logs → restart/fix leak. 
+
+nice:  Set priority while starting process.
+nice -n 10 nginx
+
+renice: Change priority of running process.
+renice 14 -p <PID> 
+
+Zombie Process:
+Completed process waiting for parent cleanup.
+
+
 ##Network
 
 ping Hostname
@@ -57,18 +120,7 @@ nc -zv host port
 Check MongoDB port
 nc -zv mongodb.example.com 27017
 
-##Systemctl
 
-systemctl status nginx
-systemctl start nginx
-systemctl stop nginx
-systecmctl restart nginx
-systemctl enable nginx
-systecmctl disable nginx
-Check logs:
-
-journalctl -u nginx
-journal -xe
 
 ##Package Management
 RHEL/Centos
