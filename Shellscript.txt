@@ -1,0 +1,71 @@
+##Variables
+
+name="Jeevana"
+echo $name
+
+##Arguments
+
+echo $1
+echo $2
+echo $0
+echo $#
+echo $@
+
+##Condotions
+
+if [ $? -eq 0 ]
+then 
+    echo "success"
+else 
+    echo "failure"
+fi
+
+Directory check:
+
+if [ -d /app ]
+then
+ echo "exists"
+fi
+
+File Check:
+
+if [ -f test.txt ]
+then
+    echo file "exists"
+fi
+
+##Functions
+validate(){
+    if [ $1 -eq 0 ]
+    then
+        echo "$2 success"
+    else
+        echo "$2 failed"
+        exit 1
+    fi 
+}
+
+Usage:
+
+dnf install nginx -y 
+validate $? "Nginx installed"
+
+##Exit status
+
+echo $?
+0 = Success
+Non zero = failure
+
+##Redirection
+overwrite:
+command > file.log
+
+Append:
+command>>file.log
+
+Stdout+Stderr:
+command &>>file.log
+
+Discard output:
+command>/dev/null 2>&1
+
