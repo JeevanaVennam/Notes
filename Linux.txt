@@ -1,0 +1,72 @@
+##User Permissions
+
+id
+whoami
+sudo su -
+passwd username
+
+chmod 755 file
+chmod 644 file
+chown user:group file
+ls -l
+
+## File Operations
+
+pwd
+cd
+mkdir
+rm -rf
+cp -r
+mv
+touch
+cat 
+vim
+less
+head
+tail -f
+find / -name file.txt
+
+## Process Management
+
+ps -ef
+top
+htop
+pgrep nginx
+kill PID
+kill -9 PID
+
+##Disk Memory
+
+df -h
+du -sh *
+free -m
+lsblk
+mount
+
+##Network
+
+ping Hostname
+nslookup domain
+dig domain
+curl url
+wget url
+ss -lntp
+netsta -lntp
+telnet host port
+nc -zv host port
+Check MongoDB port
+nc -zv mongodb.example.com 27017
+
+##Systemctl
+
+systemctl status nginx
+systemctl start nginx
+systemctl stop nginx
+systecmctl restart nginx
+systemctl enable nginx
+systecmctl disable nginx
+Check logs:
+
+journalctl -u nginx
+journal -xe
+
