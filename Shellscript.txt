@@ -5,13 +5,13 @@ echo $name
 
 ##Arguments
 
-echo $1
-echo $2
-echo $0
-echo $#
-echo $@
+echo $1  (first argument)
+echo $2  (second argument)
+echo $0  (file name)
+echo $#  (no. of arguments)
+echo $@  (all arguments)
 
-##Condotions
+##Conditions
 
 if [ $? -eq 0 ]
 then 
