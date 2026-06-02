@@ -1,0 +1,27 @@
+##Clone
+
+git clone repo url
+
+##Check status
+
+git status
+
+##Commit
+
+git add .
+git commit -m "text message"
+
+##Push
+
+git push origin main
+
+##Pull
+
+git pull origin main
+
+##Branches
+
+git branch
+git checkout dev
+git checkout -b feature
+
