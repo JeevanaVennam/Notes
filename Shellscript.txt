@@ -69,3 +69,13 @@ command &>>file.log
 Discard output:
 command>/dev/null 2>&1
 
+CPU usgae
+cpu=$(top -bn1 | grep 'cpu(s) | awk 'print{ 100 -$8} )'
+
+memory usage
+mem=$((100 * $used_mem/$total_mem))
+used_mem=$(free -m | grep 'Mem' | awk '{print $3}')
+total_mem=$(free -m | grep 'Mem' | awk '{print $2}')
+
+disk usage
+disk_usage=$(df -hT | grep -V Filesystem)
