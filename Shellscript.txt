@@ -6,13 +6,35 @@ echo $name
 ##Arguments
 
 echo $1  (first argument)
+#used to pass components name dynamically to deployment scripts
 echo $2  (second argument)
+Used in:
+common.sh frontend
+frontend becomes $1
+
 echo $0  (file name)
+#used to pass the script name into the deployment project
+Used in:
+script_name=$(echo $0 | cut -d "." -f1)
+we used this script_name in naming the log folder
+automatically create /tmp/frontend.log and /tmp/mongodb.log in my deployment scripts
+
 echo $#  (no. of arguments)
+used in backup script to check if the arguments are given properly meaning atleast the source and destination are given while executing the backup script
+usage(){
+    echo -e "$r Usage:: $n 15.backup.sh <source_directory> <destination_directory> <days(optional)>"
+    exit 1
+}
+checkroot
+
+if [ $# -lt 2 ]
+then
+    usage
+fi
 echo $@  (all arguments)
 
 ##Conditions
-
+#space mandatory after [ and argument and also betweem last word and ]
 if [ $? -eq 0 ]
 then 
     echo "success"
@@ -79,3 +101,4 @@ total_mem=$(free -m | grep 'Mem' | awk '{print $2}')
 
 disk usage
 disk_usage=$(df -hT | grep -V Filesystem)
+
