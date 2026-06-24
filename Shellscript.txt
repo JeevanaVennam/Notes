@@ -5,6 +5,9 @@ echo $name
 
 ##Arguments
 
+## Shell VAriables
+
+
 echo $1  (first argument)
 #used to pass components name dynamically to deployment scripts
 echo $2  (second argument)
@@ -101,4 +104,10 @@ total_mem=$(free -m | grep 'Mem' | awk '{print $2}')
 
 disk usage
 disk_usage=$(df -hT | grep -V Filesystem)
+
+how to run command in bacjkground
+run & at the last line of script we use it in sleep command
+
+how to take output of command 
+$()
 
