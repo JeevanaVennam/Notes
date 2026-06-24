@@ -1,0 +1,3 @@
+inventory is where the nodes are listed
+if hosts is frontend node other tha local there need not local connection given in yaml script
+Inventory < Play vars < vars_prompt < vars_files < Task vars < Extra vars (-e)
