@@ -7,7 +7,7 @@ BIOS : Legacy firmware MBR
 
 UEFI : Modern firmware GPT Secure boot fast large disks
 
-GRUB : loads kernel
+GRUB (Grand Unified Bootloader): loads kernel
 
 systemd : modern init systems (PID 1) startup process
 (tradictional SysVinit)
