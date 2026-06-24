@@ -34,23 +34,68 @@ if [ $# -lt 2 ]
 then
     usage
 fi
-echo $@  (all arguments)
 
-##Conditions
+
+echo $@
+
+Purpose:
+All arguments passed to a script.
+
+Used In:
+Reusable deployment/install scripts that need to process multiple inputs.
+
+Used in:
+./install.sh nginx mysql redis
+for package in "$@"
+do
+    dnf install $package -y
+done
+
+##IF CONDITIONS
 #space mandatory after [ and argument and also betweem last word and ]
+
+Purpose:
+Make decisions in shell scripts.
+
+Used In:
+1. Validate package installation.
+2. Check root user access.
+3. Verify file existence.
+4. Verify directory existence.
+5. Check service status.
+
+Example:
+After dnf install nginx -y, check $? before continuing deployment.
+
+Validate package installation: 
+
+Validate()
+{
 if [ $? -eq 0 ]
 then 
     echo "success"
 else 
     echo "failure"
 fi
+}
+
+Check root user access:
+
+user_id=$(id -u)
+
+if [ $USERID -ne 0 ]
+then
+    echo "Run as root"
+    exit 1
+fi
 
 Directory check:
 
-if [ -d /app ]
+if [ ! -d /app ]
 then
- echo "exists"
+    mkdir /app
 fi
+
 
 File Check:
 
